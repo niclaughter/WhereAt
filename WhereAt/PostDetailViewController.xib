@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostDetailViewController" customModule="WhereAt" customModuleProvider="target">
+            <connections>
+                <outlet property="mapView" destination="AAu-Wm-8sb" id="sCe-7O-raa"/>
+                <outlet property="tableView" destination="c7E-vo-0pZ" id="aoT-8f-0Em"/>
+                <outlet property="textField" destination="5QT-Ga-WFC" id="S3l-qV-FKq"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="AX9-Yf-1gb">
+                    <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EHK-kR-Dlm">
+                            <rect key="frame" x="0.0" y="0.0" width="66" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="66" id="wIS-df-yKa"/>
+                            </constraints>
+                            <state key="normal" title="Dismiss"/>
+                            <connections>
+                                <action selector="dismissViewController:" destination="-1" eventType="touchUpInside" id="R1H-0i-lyw"/>
+                            </connections>
+                        </button>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5QT-Ga-WFC">
+                            <rect key="frame" x="74" y="0.0" width="452" height="44"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCw-LY-ILR">
+                            <rect key="frame" x="534" y="0.0" width="66" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="66" id="1zb-4G-ZfZ"/>
+                                <constraint firstAttribute="height" constant="44" id="wvp-yS-DmK"/>
+                            </constraints>
+                            <state key="normal" title="Post"/>
+                        </button>
+                    </subviews>
+                </stackView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="c7E-vo-0pZ">
+                    <rect key="frame" x="0.0" y="200" width="600" height="356"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="ePR-VM-VXZ"/>
+                        <outlet property="delegate" destination="-1" id="zKb-pN-XJA"/>
+                    </connections>
+                </tableView>
+                <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AAu-Wm-8sb">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="ZKs-tg-mDK"/>
+                    </constraints>
+                </mapView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="c7E-vo-0pZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="SAO-l2-mu9"/>
+                <constraint firstItem="AX9-Yf-1gb" firstAttribute="top" secondItem="c7E-vo-0pZ" secondAttribute="bottom" id="TV0-rr-xcR"/>
+                <constraint firstItem="AX9-Yf-1gb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Wxe-ey-d9K"/>
+                <constraint firstItem="AAu-Wm-8sb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="XJO-w8-Oqh"/>
+                <constraint firstAttribute="trailing" secondItem="AAu-Wm-8sb" secondAttribute="trailing" id="aap-hi-YMp"/>
+                <constraint firstItem="c7E-vo-0pZ" firstAttribute="top" secondItem="AAu-Wm-8sb" secondAttribute="bottom" id="dHa-wd-EKM"/>
+                <constraint firstItem="AAu-Wm-8sb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kzP-qp-hPd"/>
+                <constraint firstAttribute="trailing" secondItem="AX9-Yf-1gb" secondAttribute="trailing" id="qdm-O5-DsZ"/>
+                <constraint firstAttribute="trailing" secondItem="c7E-vo-0pZ" secondAttribute="trailing" id="ttg-J2-KuD"/>
+                <constraint firstAttribute="bottom" secondItem="AX9-Yf-1gb" secondAttribute="bottom" id="xEE-PW-TUv"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

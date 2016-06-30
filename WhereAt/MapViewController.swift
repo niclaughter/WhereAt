@@ -1,5 +1,5 @@
 //
-//  PostDetailViewController.swift
+//  MapViewController.swift
 //  WhereAt
 //
 //  Created by Nicholas Laughter on 6/30/16.
@@ -9,50 +9,58 @@
 import UIKit
 import MapKit
 
-class PostDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
     
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
-    let messages = MockData.shared.mockComments
-
+    let locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        setUpMapView(mapView)
+        hideKeyboardWhenSwipeDown()
         textField.delegate = self
-        tableView.estimatedRowHeight = 44
-        tableView.rowHeight = UITableViewAutomaticDimension
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: self.view.window)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: self.view.window)
+    }
+    
+    func setUpMapView(mapView: MKMapView) {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 15
+        locationManager.startUpdatingLocation()
+        locationManager.requestWhenInUseAuthorization()
         
-        hideKeyboardWhenSwipeDown()
+        guard let location = locationManager.location else { return }
+        let coordinateRegionWithMeters = MKCoordinateRegionMakeWithDistance(location.coordinate, 25, 25)
+        mapView.region = coordinateRegionWithMeters
+        
+        updateMap(mapView, location: location)
     }
     
-    @IBAction func dismissViewController(sender: UIButton) {
-        dismissViewControllerAnimated(true, completion: nil)
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else { return }
+        let timestamp = location.timestamp
+        let howRecent = timestamp.timeIntervalSinceNow
+        if abs(howRecent) < 15.0 {
+            updateMap(mapView, location: location)
+        }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = messages[indexPath.row]
-        return cell
+    func updateMap(map: MKMapView, location: CLLocation) {
+        map.centerCoordinate = location.coordinate
     }
     
     // MARK: - Keyboard translation & scroll
     
-    func scrollToBottom() {
-        if messages.count > 0 {
-            let indexPath = NSIndexPath(forRow: (messages.count - 1), inSection: 0)
-            tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Bottom, animated: false)
-        }
-    }
+    //    func scrollToBottom() {
+    //        if messages.count > 0 {
+    //            let indexPath = NSIndexPath(forRow: (messages.count - 1), inSection: 0)
+    //            messageTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Bottom, animated: false)
+    //        }
+    //    }
     
     func keyboardWillShow(sender: NSNotification) {
         guard let userInfo: [NSObject: AnyObject] = sender.userInfo,
@@ -67,20 +75,13 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
                 self.view.frame.origin.y += (keyboardSize.height - offset.height)
             })
         }
-        scrollToBottom()
+        //        scrollToBottom()
     }
     
     func keyboardWillHide(sender: NSNotification) {
         guard let userInfo: [NSObject: AnyObject] = sender.userInfo,
             keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]?.CGRectValue.size else { return }
         self.view.frame.origin.y  += keyboardSize.height
-        scrollToBottom()
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: self.view.window)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: self.view.window)
+        //        scrollToBottom()
     }
 }

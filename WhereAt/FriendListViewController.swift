@@ -2,34 +2,23 @@
 //  FriendListViewController.swift
 //  WhereAt
 //
-//  Created by Nicholas Laughter on 6/29/16.
+//  Created by Nicholas Laughter on 6/30/16.
 //  Copyright © 2016 Nicholas Laughter. All rights reserved.
 //
 
 import UIKit
 
-class FriendListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet var swipeLeft: UISwipeGestureRecognizer!
+class FriendListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        swipeLeft.direction = .Left
-        tableView.addGestureRecognizer(swipeLeft)
+        // Do any additional setup after loading the view.
     }
 
-    @IBAction func swipeLeftSwiped(sender: UISwipeGestureRecognizer) {
-        performSegueWithIdentifier("friendsToMainSegue", sender: self)
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
 

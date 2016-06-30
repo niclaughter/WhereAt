@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController" customModule="WhereAt" customModuleProvider="target">
+            <connections>
+                <outlet property="mapView" destination="8dp-hH-gqW" id="PK4-6v-hbo"/>
+                <outlet property="textField" destination="Sfm-8K-hst" id="7Ii-Z5-igd"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8dp-hH-gqW">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                </mapView>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZxJ-iG-5Hw">
+                    <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sfm-8K-hst">
+                            <rect key="frame" x="0.0" y="0.0" width="548" height="44"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tLy-Zt-6dQ">
+                            <rect key="frame" x="556" y="0.0" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="Hqs-ZV-KaT"/>
+                                <constraint firstAttribute="width" constant="44" id="zQT-jV-0wn"/>
+                            </constraints>
+                            <state key="normal" title="Post"/>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="ZxJ-iG-5Hw" firstAttribute="top" secondItem="8dp-hH-gqW" secondAttribute="bottom" id="1Pu-5V-rXk"/>
+                <constraint firstAttribute="trailing" secondItem="8dp-hH-gqW" secondAttribute="trailing" id="40K-Cw-8p7"/>
+                <constraint firstAttribute="trailing" secondItem="ZxJ-iG-5Hw" secondAttribute="trailing" id="I7r-Xx-gZX"/>
+                <constraint firstItem="ZxJ-iG-5Hw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="LuC-sA-LYb"/>
+                <constraint firstItem="8dp-hH-gqW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="cJa-yV-FbU"/>
+                <constraint firstItem="8dp-hH-gqW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="h0d-jl-Za5"/>
+                <constraint firstAttribute="bottom" secondItem="ZxJ-iG-5Hw" secondAttribute="bottom" id="lqd-G6-Qdz"/>
+            </constraints>
+        </view>
+    </objects>
+</document>
