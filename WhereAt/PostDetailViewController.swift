@@ -42,6 +42,7 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.textLabel?.text = messages[indexPath.row]
+        cell.textLabel?.numberOfLines = 0
         return cell
     }
     

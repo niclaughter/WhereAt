@@ -53,14 +53,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UITextFiel
         map.centerCoordinate = location.coordinate
     }
     
-    // MARK: - Keyboard translation & scroll
-    
-    //    func scrollToBottom() {
-    //        if messages.count > 0 {
-    //            let indexPath = NSIndexPath(forRow: (messages.count - 1), inSection: 0)
-    //            messageTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Bottom, animated: false)
-    //        }
-    //    }
+    // MARK: - Keyboard translation
     
     func keyboardWillShow(sender: NSNotification) {
         guard let userInfo: [NSObject: AnyObject] = sender.userInfo,

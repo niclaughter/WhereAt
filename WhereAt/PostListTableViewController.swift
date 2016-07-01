@@ -16,6 +16,7 @@ class PostListTableViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.registerNib(UINib(nibName: "PostTableViewCell", bundle: nil), forCellReuseIdentifier: postCellKey)
+        tableView.contentInset = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0)
     }
     
     // MARK: - Table view data source
