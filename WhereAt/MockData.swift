@@ -16,7 +16,7 @@ class MockData {
     let mockComments = [
         "Cool!",
         "On the way!",
-        "Still there?",
+        "Still there?Still there?Still there?Still there?Still there?Still there?Still there?Still there?Still there?Still there?Still there?Still there?Still there?Still there?Still there?Still there?Still there?Still there?",
     ]
     
     let mockLocations = [
@@ -24,5 +24,12 @@ class MockData {
         CLLocation(latitude: 40.761823, longitude: -111.890594),
         CLLocation(latitude: 40.766391, longitude: -111.891514),
         CLLocation(latitude: 40.286274, longitude: -111.687705),
+    ]
+    
+    let mockFriends = [
+        "Sean G.",
+        "Ross M.",
+        "Alan B",
+        "Karl P.",
     ]
 }
