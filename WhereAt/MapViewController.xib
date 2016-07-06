@@ -35,6 +35,9 @@
                                 <constraint firstAttribute="width" constant="44" id="zQT-jV-0wn"/>
                             </constraints>
                             <state key="normal" title="Post"/>
+                            <connections>
+                                <action selector="postButtonTapped:" destination="-1" eventType="touchUpInside" id="0JK-gm-v4x"/>
+                            </connections>
                         </button>
                     </subviews>
                 </stackView>

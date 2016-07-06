@@ -12,18 +12,13 @@ import CloudKit
 class PostListTableViewController: UITableViewController {
     
     private let postCellKey = "postCell"
-    let cloudKitManager = CloudKitManager()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.registerNib(UINib(nibName: "PostTableViewCell", bundle: nil), forCellReuseIdentifier: postCellKey)
         tableView.contentInset = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0)
-    }
-    
-    func queryPosts() {
-//        let query = CKQuery(recordType: "Post", predicate: NSPredicate(format: <#T##String#>, <#T##args: CVarArgType...##CVarArgType#>)
-//        cloudKitManager.publicDatabase.performQuery(<#T##query: CKQuery##CKQuery#>, inZoneWithID: <#T##CKRecordZoneID?#>, completionHandler: <#T##([CKRecord]?, NSError?) -> Void#>)
     }
     
     // MARK: - Table view data source

@@ -19,7 +19,6 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet private weak var tableView: UITableView!
     private let friendCellKey = "friendCell"
-    private let cloudKitManager = CloudKitManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +42,7 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func getContacts() {
         
-        cloudKitManager.fetchAllDiscoverableUsers { userInfoRecords in
+        CloudKitManager.shared.fetchAllDiscoverableUsers { userInfoRecords in
             
             if let userInfoRecords = userInfoRecords {
                 self.friends = userInfoRecords.flatMap { $0.displayContact }
