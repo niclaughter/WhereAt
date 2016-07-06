@@ -29,6 +29,7 @@
 		66486FF21D243C69007BEAB3 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66486FF11D243C69007BEAB3 /* CloudKitManager.swift */; };
 		66BB8BE91D26DE1F00481C48 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BB8BE71D26DE1F00481C48 /* FriendTableViewCell.swift */; };
 		66BB8BEA1D26DE1F00481C48 /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66BB8BE81D26DE1F00481C48 /* FriendTableViewCell.xib */; };
+		66C3E3191D2C1B59005FE99B /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C3E3181D2C1B59005FE99B /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		66486FF11D243C69007BEAB3 /* CloudKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		66BB8BE71D26DE1F00481C48 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		66BB8BE81D26DE1F00481C48 /* FriendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
+		66C3E3181D2C1B59005FE99B /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				661656561D23424A00150905 /* WhereAt.entitlements */,
 				661656441D232ADE00150905 /* AppDelegate.swift */,
 				664870041D247204007BEAB3 /* View */,
+				66C3E3181D2C1B59005FE99B /* Post.swift */,
 				66486FF11D243C69007BEAB3 /* CloudKitManager.swift */,
 				66115DB51D25CEBE00BE885B /* Extensions.swift */,
 				662886F11D25D4E60020D909 /* MockData.swift */,
@@ -221,6 +224,7 @@
 				661656451D232ADE00150905 /* AppDelegate.swift in Sources */,
 				66115DB61D25CEBE00BE885B /* Extensions.swift in Sources */,
 				66115DA11D259FE800BE885B /* MapViewController.swift in Sources */,
+				66C3E3191D2C1B59005FE99B /* Post.swift in Sources */,
 				66115DAD1D25A05400BE885B /* FriendListViewController.swift in Sources */,
 				66BB8BE91D26DE1F00481C48 /* FriendTableViewCell.swift in Sources */,
 				66115DB31D25ABC600BE885B /* PostTableViewCell.swift in Sources */,

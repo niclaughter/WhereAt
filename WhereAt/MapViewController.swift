@@ -8,12 +8,14 @@
 
 import UIKit
 import MapKit
+import CloudKit
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
+    let cloudKitManager = CloudKitManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +26,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UITextFiel
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: self.view.window)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: self.view.window)
+    }
+    
+    @IBAction func postButtonTapped(sender: AnyObject) {
+        let postRecord = CKRecord(recordType: "Post")
+        guard let location = locationManager.location else { return }
+        postRecord["location"] = location
+        if let comment = textField.text {
+            postRecord["comment"] = comment
+        }
+        cloudKitManager.saveRecord(postRecord, completion: nil)
     }
     
     func setUpMapView(mapView: MKMapView) {

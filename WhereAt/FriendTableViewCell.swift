@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import Contacts
 
 class FriendTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     
-    func updateWithFriend(friend: String) {
-        nameLabel.text = friend
+    func updateWithFriend(friend: CNContact) {
+        var returnedName = "\(friend.givenName)"
+        if let lastInitial = friend.familyName.characters.first {
+            returnedName += " \(lastInitial)."
+        }
+        nameLabel.text = returnedName
     }
 }

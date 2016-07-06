@@ -40,11 +40,17 @@ class CloudKitManager {
         checkCloudKitAvailability()
     }
     
+    class func requestCloudKitPermissions() {
+        CKContainer.defaultContainer().requestApplicationPermission(.UserDiscoverability) { status, error in
+            print("\(status.rawValue)")
+        }
+    }
+    
     // MARK: - User Info Discovery
     
     func fetchLoggedInUserRecord(completion: ((record: CKRecord?, error: NSError? ) -> Void)?) {
         
-        CKContainer.defaultContainer().fetchUserRecordIDWithCompletionHandler { (recordID, error) in
+        CKContainer.defaultContainer().fetchUserRecordIDWithCompletionHandler { recordID, error in
             
             if let error = error,
                 let completion = completion {
@@ -65,7 +71,7 @@ class CloudKitManager {
         
         let operation = CKDiscoverUserInfosOperation(emailAddresses: nil, userRecordIDs: [recordID])
         
-        operation.discoverUserInfosCompletionBlock = { (emailsToUserInfos, userRecordIDsToUserInfos, operationError) -> Void in
+        operation.discoverUserInfosCompletionBlock = { emailsToUserInfos, userRecordIDsToUserInfos, operationError in
             
             if let userRecordIDsToUserInfos = userRecordIDsToUserInfos,
                 let userInfo = userRecordIDsToUserInfos[recordID],
@@ -84,10 +90,12 @@ class CloudKitManager {
         
         let operation = CKDiscoverAllContactsOperation()
         
-        operation.discoverAllContactsCompletionBlock = { (discoveredUserInfos, error) -> Void in
+        operation.discoverAllContactsCompletionBlock = { discoveredUserInfos, error in
             
             if let completion = completion {
-                completion(userInfoRecords:  discoveredUserInfos)
+                NSOperationQueue.mainQueue().addOperationWithBlock {
+                    completion(userInfoRecords:  discoveredUserInfos)
+                }
             }
         }
         
